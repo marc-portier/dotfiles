@@ -107,6 +107,19 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# use nvm if it is there
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# Find dotfiles base path, with the -f option for full path if necessary
+if readlink -f ~/.bashrc > /dev/null 2>&1; then
+  dotfiles=`dirname $(readlink -f ~/.bashrc)`
+else
+  dotfiles=`dirname $(readlink ~/.bashrc)`
+fi
+
+# Set up paths
+export PATH=$dotfiles/bin:$PATH
+[ -f ~/.paths ] && source ~/.paths
