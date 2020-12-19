@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+read -p "Do you want to install the dotfiles? " -r
+if [[ ! $REPLY =~ ^(Y|y|()) ]]; then exit; fi
+
+echo "Linking profile files and directories..."
+dotfiles="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+for file in bash_profile bashrc bash_aliases vim vim/vimrc; do
+  homefile=~/.$(echo $file | sed -Ee 's/[a-z]+\///')
+  rm -rf "$homefile" 2>/dev/null
+  ln -s "$dotfiles/$file" "$homefile"
+done
+
+echo "Setting up git..."
+$dotfiles/bin/git-setup-prefs
+
+echo "Setting up Vim..."
+vim +PlugInstall! +qall 2>/dev/null
+
+echo "Done."
+
+echo "Run the following to activate:"
+echo "  cd && source .bashrc"

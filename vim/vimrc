@@ -1,0 +1,27 @@
+syntax on                            " syntax highlighting aan:
+
+set tabstop=2                        " tabstop en shiftwidt (voor autoindent) instellen
+set shiftwidth=2 
+set autoindent 
+set expandtab                        " replace tabs by spaces
+
+set ignorecase                       " case insensitive zoeken
+set smartcase                        " tenzij het zoekpatroon hoofdletters bevat
+set incsearch 
+set hlsearch 
+
+set matchpairs=(:),{:},[:],<:>       " paren van karakters, en higlight het matching karakter eventjes
+set showmatch 
+set backspace=2                      " backspace over EOL's laten werken
+
+set backup                           " backups 
+set backupdir=. 
+set directory=/tmp,.                 " Keep swap files in one location
+
+set ruler                            " lijn- en kolomnummer
+set nu                               " maar daarnaast ook nog eens explciet de lijnnummers voor elke lijn.
+set showmode                         " toon de editing mode (command/insert/...)
+
+"hoe de dingen eruit zien
+set guifont=Monospace\ 12
+highlight Normal guibg=lightyellow 

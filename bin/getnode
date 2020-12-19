@@ -1,0 +1,21 @@
+#!/bin/bash
+
+version="v0.37.2"
+nvmdir=${HOME}/.nvm
+
+if [[ -d ${nvmdir} ]]; then
+  echo "~/.nvm already exists - exiting" 
+  exit 1
+fi  
+
+echo "getting the installer and running it..." 
+curl -sL https://raw.githubusercontent.com/nvm-sh/nvm/${version}/install.sh -o - | sh
+
+
+export NVM_DIR="${nvmdir}
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+nvm install --lts
+
+node --version
+npm --version

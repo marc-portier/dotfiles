@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+CWD=$(pwd)
+githubuser="marc-portier"
+dotfolder="~/bin/.dotfolder/"
+
+echo "Checking if git is installed..."
+if ! which git > /dev/null; then
+  echo "Installing git..."
+  sudo apt-get install -y git
+fi
+
+echo "Checking if dotfiles are installed..."
+if [ -z "$dotfiles" ]; then
+  echo "Installing dotfiles..."
+  mkdir -p ${dotfolder}
+  git clone --depth 1 https://github.com/${githubuser}/dotfiles.git ${dotfolder}
+  cd ${dotfolder}
+  yes | ./install
+else
+  echo "All done."
+fi
+
+cd "$CWD"

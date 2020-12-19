@@ -1,0 +1,7 @@
+install node through nvm
+* not directly but in 2nd level throughh 'dotget node' script in ./dotfiles
+* curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.2/install.sh | bash
+
+
+install ttl validator through similar 'dotget ttl' 
+* npm install -g turtle-validator
