@@ -11,7 +11,7 @@ fi
 echo "Checking if dotfiles are installed..."
 if [ -z "${dotfiles}" ]; then
   echo "Installing dotfiles..."
-  dotfiles="~/bin/.dotfiles/"
+  dotfiles="${HOME}/bin/.dotfiles/"
   mkdir -p ${dotfiles}
   git clone --depth 1 https://github.com/${githubuser}/dotfiles.git ${dotfiles}
   cd ${dotfiles}
