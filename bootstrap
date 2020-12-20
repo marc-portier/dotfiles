@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 CWD=$(pwd)
 githubuser="marc-portier"
-dotfolder="~/bin/.dotfolder/"
+dotfiles="~/bin/.dotfiles/"
 
 echo "Checking if git is installed..."
 if ! which git > /dev/null; then
@@ -12,9 +12,9 @@ fi
 echo "Checking if dotfiles are installed..."
 if [ -z "$dotfiles" ]; then
   echo "Installing dotfiles..."
-  mkdir -p ${dotfolder}
-  git clone --depth 1 https://github.com/${githubuser}/dotfiles.git ${dotfolder}
-  cd ${dotfolder}
+  mkdir -p ${dotfiles}
+  git clone --depth 1 https://github.com/${githubuser}/dotfiles.git ${dotfiles}
+  cd ${dotfiles}
   yes | ./install
 else
   echo "All done."
