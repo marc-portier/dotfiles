@@ -12,7 +12,7 @@ echo "getting the installer and running it..."
 curl -sL https://raw.githubusercontent.com/nvm-sh/nvm/${version}/install.sh -o - | sh
 
 
-export NVM_DIR="${nvmdir}
+export NVM_DIR="${nvmdir}"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 nvm install --lts

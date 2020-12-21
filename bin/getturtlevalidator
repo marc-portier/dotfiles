@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ -z $(which npm) ]]; then
+  echo "This only works if npm and thus node are installed - run getnvm first!"
+  exit 1
+fi
+npm install -g turtle-validator
+
