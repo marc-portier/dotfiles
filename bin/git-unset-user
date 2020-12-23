@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+git config --unset --global user.name
+git config --unset --global user.email

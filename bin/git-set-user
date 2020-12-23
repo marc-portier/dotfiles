@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+name=${1:-"Marc Portier"}
+email=${2:-"marc.portier@gmail.com"}
+
+
+
+read -p "user.name (${name})' = ? " -r 
+if [[ ! ${REPLY} =~ ^(Y|y|()) ]]; then 
+  name="${REPLY}"
+fi
+read -p "user.email (${email}) = ? " -r 
+if [[ ! ${REPLY} =~ ^(Y|y|()) ]]; then 
+  email="${REPLY}"
+fi
+
+git config --global user.name  "${name}"
+git config --global user.email "${email}"

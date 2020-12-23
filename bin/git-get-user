@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo "user.name = $(git config --get --global user.name)"
+echo "user.email = $(git config --get --global user.email)"
