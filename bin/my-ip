@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+interface=${1}
+
+function getip {
+    intf=${1}
+    ip=$(ifconfig ${1} | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p')
+}
+
+if [[  -z ${interface} ]]; then
+  for intf in $(ip link show | grep -v -P "^\s+link" |cut -d : -f 2); do
+    getip ${intf}
+    printf "%16s: %-16s\n" ${intf} ${ip}
+  done
+  printf "%18s: %-16s\n" "« external »" $(curl -s ifconfig.co)
+else
+  getip ${interface}
+  echo ${ip}
+fi
