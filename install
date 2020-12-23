@@ -17,7 +17,7 @@ for file in bash_profile bashrc bash_aliases vim vim/vimrc; do
 done
 
 echo "Setting up git..."
-${dotfiles}/bin/git-setup-prefs
+${dotfiles}/bin/git-prefs
 
 echo "Setting up Vim..."
 vim +PlugInstall! +qall 2>/dev/null
