@@ -28,6 +28,14 @@ alias rotnor='xrandr --output eDP-1 --rotate normal'
 alias kbitl='setxkbmap -layout us -variant intl'
 alias kbnrm='setxkbmap -layout us'
 
+
+#mkdir then go into it
+mgdir() {
+  mkdir -p ${1};
+  if [[ "$?" == "0" ]]; then cd ${1}; fi
+}
+
+
 #home tv stuff
 tv() {
    vlc -f udp://@${1}.vdtv.lan:50000 &
