@@ -40,3 +40,6 @@ mgdir() {
 tv() {
    vlc -f udp://@${1}.vdtv.lan:50000 &
 }
+
+#pdfbook from texlive-extra-utils in new version
+alias pdfbook='pdfbook2'

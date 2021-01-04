@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 read -p "Do you want to install the dotfiles? " -r
-if [[ ! ${REPLY} =~ ^(Y|y|()) ]]; then exit; fi
+if [[ ! -z ${REPLY} && ! ${REPLY} =~ ^Y|y ]]; then exit; fi
 
 echo "Linking profile files and directories..."
 dotfiles="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
