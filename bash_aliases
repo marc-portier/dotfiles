@@ -28,11 +28,13 @@ alias rotnor='xrandr --output eDP-1 --rotate normal'
 alias kbitl='setxkbmap -layout us -variant intl'
 alias kbnrm='setxkbmap -layout us'
 
+#pdfbook from texlive-extra-utils in new version
+alias pdfbook='pdfbook2'
 
 #mkdir then go into it
 mgdir() {
-  mkdir -p ${1};
-  if [[ "$?" == "0" ]]; then cd ${1}; fi
+  mkdir -p "${1}";
+  if [[ "$?" == "0" ]]; then cd "${1}"; fi
 }
 
 
