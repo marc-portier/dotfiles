@@ -7,10 +7,6 @@ alias l1='ls -1'
 #dns 
 alias digs='dig +short'
 
-#python stuff
-alias pvac='source ./venv/bin/activate'
-alias pvmk='virtualenv venv -p python3'
-
 #file explorer
 alias nt='nautilus --no-desktop .'
 
@@ -31,12 +27,39 @@ alias kbnrm='setxkbmap -layout us'
 #pdfbook from texlive-extra-utils in new version
 alias pdfbook='pdfbook2'
 
+#python stuff
+alias pvmk='virtualenv venv -p python3'
+
+#ativate the python virtual-env 
+pvac() {
+  venv=${1:-"venv"};
+  source ./${venv}/bin/activate;
+  d=$(realpath "$(pwd)")
+  echo "virtualenv activated at ${d}" 
+}
+
+#find the venv folder upwarts, then pvac
+pvup() {
+  venv=${1:-"venv"}
+  local d=$(realpath "$(pwd)")
+  [[ -d "${d}/${venv}" ]] && pvac ${venv} && return;          # if we have venv found: activate and return
+  [[ ${d} == "/" ]] && echo "${venv} not found"  && return;   # elseif we are up in the root, fail
+  cd .. && pvup $venv                                         # else go up and continue
+  cd ${d}                                                     # then go back
+}
+
 #mkdir then go into it
 mgdir() {
   mkdir -p "${1}";
   if [[ "$?" == "0" ]]; then cd "${1}"; fi
 }
 
+#make noise
+alarm() { 
+  ( \speaker-test --frequency ${2:-660} --test sine )& pid=$!;
+  sleep ${1:-1};
+  kill -9 $pid; 
+}
 
 #home tv stuff
 tv() {
