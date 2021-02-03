@@ -65,3 +65,14 @@ alarm() {
 tv() {
    vlc -f udp://@${1}.vdtv.lan:50000 &
 }
+
+#make a qr code for a url
+qr() {
+  data=${1}
+  size=${2:-200}
+  [[ -z $data ]] && echo "no data to plot" && return;
+  url=$(printf "https://chart.googleapis.com/chart?cht=qr&chs=%dx%d&chl=%s" "$size" "$size" "$data")
+  echo "$url"
+  echo "to download use:"
+  echo "curl --url \"$url\" -o qr.png"
+}
