@@ -17,6 +17,11 @@ alias cb='find . -name "*~" -exec rm {} \;'
 alias grep='grep --colour'
 alias lkup='find -type f -print0 |xargs -0 grep --colour'
 
+#copy paste from cli to buffer - requires apt install xsel
+alias cbcp='xsel -ib'
+alias cbpst='xsel -ob'
+alias cbclr='xsel -cb'
+
 #ubuntu gnome tricks with screens, keyboards and touchpads
 alias tpoff='xinput --disable "SynPS/2 Synaptics TouchPad"'
 alias tpon='xinput --enable "SynPS/2 Synaptics TouchPad"'
