@@ -81,3 +81,11 @@ qr() {
   echo "to download use:"
   echo "curl --url \"$url\" -o qr.png"
 }
+
+#expand the uritemaplate https://shacl-play.sparna.fr/play/draw{?format,url}
+shacl2uml() {
+  #have to check further -- looks like there is bug in the rfc6570 implementation in python package uritemplates -- triling } ??
+  #echo "{\"format\": \"${2:-svg}\", \"url\": \"${1}\"}" | ute "https://shacl-play.sparna.fr/play/draw{?format,url}"
+  # even more odd -- this seems to work
+  echo "{\"format\": \"${2:-svg}\", \"url\": \"${1}\"}" | ute "https://shacl-play.sparna.fr/play/draw{?format,url"
+}

@@ -1,0 +1,36 @@
+#!/bin/bash
+
+UT=${1:-https://example.com/{var}}
+
+#assert py
+py3=$(/usr/bin/env python --version|grep "Python 3\."|wc -l) 
+if [ ${py3} -ne "1" ] ; then
+  echo "Need python3 to execute. Quiting!"
+  exit 1;
+fi
+
+#assert uritemplates
+utp=$(/usr/bin/env pip freeze|grep ^uritemplate|wc -l) 
+if [ ${utp} -ne "1" ] ; then
+  echo "Need python package 'uritemplate' - use pip install uritemplate to get it. Quiting!"
+  exit 1;
+fi
+
+#make script in temp file
+tpys=$(mktemp)
+cat << EOPY > ${tpys} 
+import sys, json
+from uritemplate import expand
+
+data = json.load(sys.stdin)
+if not isinstance(data, list):
+  data = [data]
+for row in data:
+  print(expand("${UT}", row))
+EOPY
+
+#cat stdin to script exec
+cat | (/usr/bin/env python ${tpys}) 
+
+#remove script
+rm ${tpys}
