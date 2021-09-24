@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#todo detect latest version from 
+# https://repo1.maven.org/maven2/org/topbraid/shacl/
+ver="1.3.2"
+tmpzip=$(mktemp /tmp/tmp-XXXXXX-shacl-bin.zip)
+cwd=$(pwd)
+
+echo "downloading shacl bin zip version '${ver}'" 
+curl -s --url "https://repo1.maven.org/maven2/org/topbraid/shacl/${ver}/shacl-${ver}-bin.zip" -o ${tmpzip} 2>/dev/null
+
+ls -al ${tmpzip}
+installdir=${HOME}/local/shacl/
+mkdir -p ${installdir}
+cd ${installdir}
+pwd
+unzip ${tmpzip}
+cd shacl-${ver}/bin
+bindir=$(pwd)
+for script in $(ls -1 shacl*.sh); do
+  chmod +x ${script}
+  rm ${HOME}/bin/${script} 2>/dev/null
+  ln -s ${bindir}/${script} ${HOME}/bin/${script}
+done
+cd  ${cwd}
+rm ${tmpzip}
+
+
+
+
