@@ -6,6 +6,7 @@ alias l1='ls -1'
 
 #dns 
 alias digs='dig +short'
+alias flushdns='sudo systemd-resolve --flush-caches'
 
 #file explorer
 alias nt='nautilus --no-desktop .'
