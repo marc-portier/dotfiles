@@ -12,7 +12,9 @@ alias flushdns='sudo systemd-resolve --flush-caches'
 alias nt='nautilus --no-desktop .'
 
 #cleaning
-alias cb='find . -name "*~" -exec rm {} \;'
+alias cb='find . -name "*~" -exec rm {} \;'  # remove *~ backup files
+alias dush='du -sh * | sort -h'              # space usage of current directory sorted to biggest
+alias dfh='df -h'                            # df in human readable format
 
 #finding
 alias grep='grep --colour'
