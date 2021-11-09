@@ -1,0 +1,9 @@
+# vi backup files
+*~
+
+# python venv
+venv/
+
+# personal local stuff
+.local-mpo/
+
