@@ -7,6 +7,7 @@ git config --global user.email "marc.portier@gmail.com"
 # Core
 git config --global core.editor "vim"
 git config --global core.whitespace "trailing-space,space-before-tab"
+git config --global core.excludesFile '~/.gitignore'
 
 # Aliases
 git config --global alias.co    "checkout"

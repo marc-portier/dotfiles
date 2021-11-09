@@ -89,3 +89,9 @@ qr() {
 shacl2uml() {
   echo "{\"format\": \"${2:-svg}\", \"url\": \"${1}\"}" | ute "https://shacl-play.sparna.fr/play/draw{?format,url}"
 }
+
+
+# docker stuff
+docksh() {
+  docker exec -it $(docker ps|grep ${1}|head -1|awk '{print $1}') /bin/bash
+} 
