@@ -4,6 +4,7 @@ set tabstop=2                        " tabstop en shiftwidt (voor autoindent) in
 set shiftwidth=2 
 set autoindent 
 set expandtab                        " replace tabs by spaces
+autocmd FileType make setlocal noexpandtab   "but not for makefiles
 
 set ignorecase                       " case insensitive zoeken
 set smartcase                        " tenzij het zoekpatroon hoofdletters bevat
@@ -25,3 +26,5 @@ set showmode                         " toon de editing mode (command/insert/...)
 "hoe de dingen eruit zien
 set guifont=Monospace\ 12
 highlight Normal guibg=lightyellow 
+
+au BufEnter,BufRead *conf* setf dosini  "apply dos-ini-file formatting to conf files (like oython logging.conf)
