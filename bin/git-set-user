@@ -5,12 +5,12 @@ email=${2:-"marc.portier@gmail.com"}
 
 
 
-read -p "user.name (${name})' = ? " -r 
-if [[ -z ${REPLY} || ! ${REPLY} =~ ^Y|y ]]; then 
+read -p "user.name (${name}) = ? " -r 
+if [[ ! -z ${REPLY} && ! ${REPLY} =~ ^Y|y ]]; then 
   name="${REPLY}"
 fi
 read -p "user.email (${email}) = ? " -r 
-if [[ -z ${REPLY} || ! ${REPLY} =~ ^Y|y ]]; then 
+if [[ ! -z ${REPLY} && ! ${REPLY} =~ ^Y|y ]]; then 
   email="${REPLY}"
 fi
 
