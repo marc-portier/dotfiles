@@ -1,0 +1,20 @@
+#!/bin/bash
+
+found=$(which bundle)
+test $found && echo "bundle already available! Exiting." && exit 1 # if found bail out
+
+# no bundle yet
+# first ensure ruby is there
+found=$(which ruby) 
+test -z $found && sudo apt install -y ruby ruby-dev  #if not found install it
+
+# then use gem to install bundle 
+sudo gem install bundler
+
+# finally upgrade bundle
+bundle update --bundler
+
+# report
+echo "bundle installed"
+bundle --version
+
