@@ -41,7 +41,8 @@ alias pvmk='virtualenv venv -p python3'
 #ativate the python virtual-env 
 pvac() {
   venv=${1:-"venv"};
-  source ./${venv}/bin/activate;
+  test -f ./${venv}/bin/activate &&  source ./${venv}/bin/activate;
+  test -f ./${venv}/local/bin/activate &&  source ./${venv}/local/bin/activate;
   d=$(realpath "$(pwd)")
   echo "virtualenv activated at ${d}" 
 }
