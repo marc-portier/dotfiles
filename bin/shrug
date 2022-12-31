@@ -1,0 +1,9 @@
+#! /bin/bash
+
+if [ -z $(which xclip) ]; then
+  echo -e "install xclip first\n> sudo apt-get install xclip -y"
+  exit 1
+fi
+
+echo "¯\_(ツ)_/¯" | xclip -selection c
+xclip -selection c -o
