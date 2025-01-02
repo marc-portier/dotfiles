@@ -36,20 +36,20 @@ alias kbnrm='setxkbmap -layout us'
 alias pdfbook='pdfbook2'
 
 #python stuff
-alias pvmk='virtualenv venv -p python3'
+alias pvmk='python -m venv .venv'
 
 #ativate the python virtual-env 
 pvac() {
-  venv=${1:-"venv"};
+  venv=${1:-".venv"};
   test -f ./${venv}/bin/activate &&  source ./${venv}/bin/activate;
   test -f ./${venv}/local/bin/activate &&  source ./${venv}/local/bin/activate;
   d=$(realpath "$(pwd)")
   echo "virtualenv activated at ${d}" 
 }
 
-#find the venv folder upwarts, then pvac
+#find the venv folder upwards, then pvac
 pvup() {
-  venv=${1:-"venv"}
+  venv=${1:-".venv"}
   local d=$(realpath "$(pwd)")
   [[ -d "${d}/${venv}" ]] && pvac ${venv} && return;          # if we have venv found: activate and return
   [[ ${d} == "/" ]] && echo "${venv} not found"  && return;   # elseif we are up in the root, fail
@@ -80,7 +80,7 @@ qr() {
   data=${1}
   size=${2:-200}
   [[ -z $data ]] && echo "no data to plot" && return;
-  url=$(printf "https://chart.googleapis.com/chart?cht=qr&chs=%dx%d&chl=%s" "$size" "$size" "$data")
+  url=$(printf "https://quickchart.io/chart?cht=qr&chs=%dx%d&chl=%s" "$size" "$size" "$data")
   echo "$url"
   echo "to download use:"
   echo "curl --url \"$url\" -o qr.png"
@@ -96,3 +96,8 @@ shacl2uml() {
 docksh() {
   docker exec -it $(docker ps|grep ${1}|head -1|awk '{print $1}') /bin/bash
 } 
+
+# list groups of user in ${1}
+grpls() {
+    groups ${1} | sed -e 's/^.*: //' | tr ' ' '\n' | sort
+}

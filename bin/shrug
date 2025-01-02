@@ -4,6 +4,12 @@ if [ -z $(which xclip) ]; then
   echo -e "install xclip first\n> sudo apt-get install xclip -y"
   exit 1
 fi
+if [ -z $(which xdotool) ]; then
+  echo -e "install xdotool first\n> sudo apt-get install xdotool -y"
+  exit 1
+fi
 
-echo "¯\_(ツ)_/¯" | xclip -selection c
-xclip -selection c -o
+
+TEXT="¯\_(ツ)_/¯"
+printf "%s" ${TEXT} | xclip -selection c
+xdotool key --clearmodifiers "ctrl+v"

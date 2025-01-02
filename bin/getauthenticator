@@ -1,0 +1,16 @@
+#! /usr/bin/env bash
+
+# prereq flatpak + remote for flathub
+#
+# sudo apt install flatpak
+# flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+
+# install authenticator with flathub
+# see flatpak run com.belmoussaoui.Authenticator
+# 
+flatpak install flathub com.belmoussaoui.Authenticator
+
+# to run it
+#
+# flatpak run com.belmoussaoui.Authenticator

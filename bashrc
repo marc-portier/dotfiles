@@ -123,3 +123,8 @@ fi
 # Set up paths
 export PATH=$dotfiles/bin:$PATH
 [ -f ~/.paths ] && source ~/.paths
+. "$HOME/.cargo/env"
+
+# set up gems
+export GEM_HOME="$HOME/gems"
+
