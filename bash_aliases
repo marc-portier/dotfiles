@@ -35,6 +35,10 @@ alias kbnrm='setxkbmap -layout us'
 #pdfbook from texlive-extra-utils in new version
 alias pdfbook='pdfbook2'
 
+# git stuff
+# remove all local branches that are already merged 
+alias gdbm='git branch --merged | grep -Ev "(^\*|^\+|master|main|dev)" | xargs --no-run-if-empty git branch -d'
+
 #python stuff
 alias pvmk='python -m venv .venv'
 
@@ -101,3 +105,12 @@ docksh() {
 grpls() {
     groups ${1} | sed -e 's/^.*: //' | tr ' ' '\n' | sort
 }
+
+# regular ping to check when servive comes up
+ping-wait() {
+  host=${1:-vdsrv01}
+  waits=${2:-1}
+  while true; do (ping -c 1 ${host} > /dev/null && echo -e "\nIT IS UP!") && break; echo -n "."; sleep ${waits}; done
+
+}
+
